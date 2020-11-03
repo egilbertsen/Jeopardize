@@ -17,12 +17,12 @@ module.exports = function (app) {
     res.render("registration")
   });
 
-  app.get("/jeopardyBoard", function (req, res) {
+  app.get("/jeopardyBoard", isAuthenticated, function (req, res) {
     res.render("jeopardyBoard");
   });
 
-  app.get("/clue", function (req, res) {
-    res.render("clue");
+  app.get("/userprofile", isAuthenticated, function (req, res) {
+    res.render("userprofile");
   });
 
   app.get("/logout", function (req, res) {
@@ -31,12 +31,8 @@ module.exports = function (app) {
   });
 
   //Renders home screen for game
-  app.get("/index", function (req, res) {
+  app.get("/index", isAuthenticated, function (req, res) {
     res.render("index");
   })
 
-  //Renders game board
-  // app.get("/questions", function (req, res) {
-  //   res.render("jeopardyBoard");
-  // })
 };
